@@ -1,0 +1,14 @@
+services:
+  bot:
+    build: .
+    env_file:
+      - .env
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:?Укажите TELEGRAM_BOT_TOKEN в .env}
+    volumes:
+      - bot-data:/data
+    restart: unless-stopped
+    init: true
+
+volumes:
+  bot-data:
